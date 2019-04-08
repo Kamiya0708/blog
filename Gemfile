@@ -64,4 +64,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'slim-rails'
 gem 'html2slim'
 gem 'bootstrap'
+gem 'bootstrap-sass'
 gem 'mini_racer'
+gem 'jquery-rails'
+gem 'wysiwyg-rails'
+gem 'font-awesome-sass'
