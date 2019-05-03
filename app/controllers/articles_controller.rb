@@ -56,7 +56,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
+      format.html { redirect_to articles_url, notice: '正常に更新されました。' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,10 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
+      puts '---article-----'
+      puts params
+      puts '---------------'
+  
       params.require(:article).permit(:title, :content)
     end
 end

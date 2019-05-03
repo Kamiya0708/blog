@@ -1,12 +1,10 @@
 p#notice = notice
 
-p
-  strong Title:
-  = @article.title
-p
-  strong Content:
-  = @article.content
+.card.p-2.m-auto
+  h1 = @article.title
+  br
+  .fr-view
+    = raw @article.content
 
-=> link_to 'Edit', edit_article_path(@article)
-'|
-=< link_to 'Back', articles_path
+=> link_to '編集', edit_article_path(@article), class: 'btn btn-primary mr-1'
+=< link_to '一覧', articles_path, class: 'btn btn-primary mr-1'

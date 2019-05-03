@@ -1,23 +1,39 @@
-h1 Listing articles
-
-table
-  thead
-    tr
-      th Title
-      th Content
-      th
-      th
-      th
-
-  tbody
+h1 記事一覧
+.row
+  .col-md-9
     - @articles.each do |article|
-      tr
-        td = article.title
-        td = article.content
-        td = link_to 'Show', article
-        td = link_to 'Edit', edit_article_path(article)
-        td = link_to 'Destroy', article, data: { confirm: 'Are you sure?' }, method: :delete
-
+      .card.m-3 style=("max-width: 600px;")
+        .row.no-gutters href="#"
+          .col-md-4
+            img.card-img src = '/assets/COVER.jpg'
+          .col-md-8
+            .card-body
+              h5.card-title = article.title
+              p.card-text = strip_tags article.content
+              .row
+                = link_to '詳細', article, class: 'btn btn-primary mr-1'
+                = link_to '編集', edit_article_path(article), class: 'btn btn-primary mr-1'
+                = link_to '削除', article, data: { confirm: '本当に削除しますか?' }, method: :delete, class: 'btn btn-primary mr-1'
+              p.card-text
+                small.text-muted = article.created_at.strftime("%Y-%m-%d %H:%M")
+  .col-md-3
+    .card.m-2
+      text 検索バー
+      br
+      h4 カテゴリ
+      p tes1
+      p tes2
+      p tes3
+      p tes1
+      p tes2
+      p tes3
+      p tes1
+      p tes2
+      p tes3
+      p tes1
+      p tes2
+      p tes3
+      p tes1
+      p tes2
+      p tes3
 br
-
-= link_to 'New Article', new_article_path
