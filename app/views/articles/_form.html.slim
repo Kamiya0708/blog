@@ -9,51 +9,14 @@
     = f.label :title
     = f.text_field :title
   .field
+    = f.label :thumbnail
+    = f.file_field :thumbnail, class: 'form-control'
+  .field
     = f.label :content
     = f.text_area :content
 
+  = hidden_field_tag "images_name"
   = f.submit nil, class: 'btn btn-primary mb-1'
   
   = hidden_field_tag "authenticity_token", form_authenticity_token
-  javascript:
-    $(function() {
-      //サーバ側の削除対象画像
-      var delete_images = [];
-      $('#article_content').froalaEditor({
-        language: 'ja',
-        imageAllowedTypes: ["gif", "jpeg", "jpg", "png"],
-        imageUploadURL: '/upload_image',
-        //imageMaxSize: 5 * 1024 * 1024, //5MB
-        imageUploadParams: {
-          authenticity_token: $("#authenticity_token").val()
-        },
-        videoUpload: false
-      })
-      .on('froalaEditor.image.removed', function(e, editor, $img) {
-        delete_images.push($img.attr('src').replace('\/download_file\/', ''));
-      })
-      .on('froalaEditor.image.error', function (e, editor, error, response) {
-        if (error.code == 1) alert('画像読み込みエラー');
-        else if (error.code == 2) alert('アップロードURLエラー');
-        else if (error.code == 3) alert('画像アップロードエラー');
-        else if (error.code == 4) alert('解析結果エラー');
-        else if (error.code == 5) alert('画像ファイルが大きすぎます。');
-        else if (error.code == 6) alert('この拡張子はアップロードできません。');
-      })
-      .on('froalaEditor.image.loaded', function(e, editor, $img, response) {
-        //エディタで削除後のやり直し時(Ctrl+z)画像を削除対象から外す
-        delete_images = delete_images.filter(function(name) {
-          return name !== $img.attr('src').replace('\/download_file\/', '');
-        });
-      });
-      $('form').on('submit', function(){
-        //submit時にエディタで削除した画像をサーバで削除する
-        $.ajax({
-          method: "POST",
-          url: "/delete_image",
-          data: {
-            src: delete_images
-          }
-        });
-      });
-    });
+  = javascript_include_tag 'editor.js' 

@@ -5,17 +5,21 @@ h1 記事一覧
       .card.m-3 style=("max-width: 600px;")
         .row.no-gutters href="#"
           .col-md-4
-            img.card-img src = '/assets/COVER.jpg'
+            img.card-img[
+              style=("max-height: 200px; max-width: 200px;")
+              src = (article.thumbnail.attached? ? url_for(article.thumbnail) : '/assets/COVER.jpg')
+            ]
           .col-md-8
-            .card-body
+            .card-body.h-100
               h5.card-title = article.title
               p.card-text = strip_tags article.content
-              .row
-                = link_to '詳細', article, class: 'btn btn-primary mr-1'
-                = link_to '編集', edit_article_path(article), class: 'btn btn-primary mr-1'
-                = link_to '削除', article, data: { confirm: '本当に削除しますか?' }, method: :delete, class: 'btn btn-primary mr-1'
-              p.card-text
-                small.text-muted = article.created_at.strftime("%Y-%m-%d %H:%M")
+              .mt-auto.mb-0
+                .row.ml-0
+                  = link_to '詳細', article, class: 'btn btn-primary mr-1'
+                  = link_to '編集', edit_article_path(article), class: 'btn btn-primary mr-1'
+                  = link_to '削除', article, data: { confirm: '本当に削除しますか?' }, method: :delete, class: 'btn btn-primary mr-1'
+                p.card-text
+                  small.text-muted = article.created_at.strftime("%Y-%m-%d %H:%M")
   .col-md-3
     .card.m-2
       text 検索バー
