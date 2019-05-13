@@ -1,17 +1,17 @@
-h1 記事一覧
+h1.text-light 記事一覧
 .row
   .col-md-9
     - @articles.each do |article|
       .card.m-3 style=("max-width: 600px;")
         .row.no-gutters href="#"
-          .col-md-4
+          .col-md-4.d-none.d-md-block
             img.card-img[
-              style=("max-height: 200px; max-width: 200px;")
+              style = ("max-height: 200px; max-width: 200px;")
               src = (article.thumbnail.attached? ? url_for(article.thumbnail) : '/assets/COVER.jpg')
             ]
           .col-md-8
             .card-body.h-100
-              h5.card-title = article.title
+              h4.card-title = article.title
               p.card-text = strip_tags article.content
               .mt-auto.mb-0
                 .row.ml-0
@@ -20,24 +20,18 @@ h1 記事一覧
                   = link_to '削除', article, data: { confirm: '本当に削除しますか?' }, method: :delete, class: 'btn btn-primary mr-1'
                 p.card-text
                   small.text-muted = article.created_at.strftime("%Y-%m-%d %H:%M")
-  .col-md-3
+  .col-md-3.d-none.d-md-block
     .card.m-2
-      text 検索バー
+      h5.font-weight-bold 記事検索
+      = search_form_for @q, class: 'mb-5' do |f|
+        .form-group
+          = f.label :title_cont, 'タイトル', class: 'col-form-label'
+        .form-group.row.m-0
+          = f.search_field :title_cont, class: 'form-control'
+          = f.submit class: 'btm btn-outline-primary'
       br
-      h4 カテゴリ
-      p tes1
-      p tes2
-      p tes3
-      p tes1
-      p tes2
-      p tes3
-      p tes1
-      p tes2
-      p tes3
-      p tes1
-      p tes2
-      p tes3
-      p tes1
-      p tes2
-      p tes3
+.mb-3
+  = paginate @articles
+  .text-light
+    = page_entries_info @articles
 br
