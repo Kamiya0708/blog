@@ -16,10 +16,11 @@ h1.text-light 記事一覧
               .mt-auto.mb-0
                 .row.ml-0
                   = link_to '詳細', article, class: 'btn btn-primary mr-1'
-                  = link_to '編集', edit_article_path(article), class: 'btn btn-primary mr-1'
-                  = link_to '削除', article, data: { confirm: '本当に削除しますか?' }, method: :delete, class: 'btn btn-primary mr-1'
+                  - if current_user
+                    = link_to '編集', edit_article_path(article), class: 'btn btn-primary mr-1'
+                    = link_to '削除', article, data: { confirm: '本当に削除しますか?' }, method: :delete, class: 'btn btn-primary mr-1'
                 p.card-text
-                  small.text-muted = article.created_at.strftime("%Y-%m-%d %H:%M")
+                  small.text-muted = '作成日時　' + article.created_at.strftime("%Y-%m-%d %H:%M")
   .col-md-3.d-none.d-md-block
     .card.m-2
       h5.font-weight-bold 記事検索

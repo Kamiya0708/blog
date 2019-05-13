@@ -1,0 +1,10 @@
+h1.text-light ログイン
+
+= form_with scope: :session, local: true do |f|
+    .form-group.text-light
+        = f.label :name, 'ユーザ名'
+        = f.text_field :name, class: 'form-control', id: 'session_name'
+    .form-group.text-light
+        = f.label :password, 'パスワード'
+        = f.text_field :password, class: 'form-control', id: 'session_password'
+    = f.submit 'ログイン', class: 'btn btn-primary'

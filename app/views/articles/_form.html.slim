@@ -5,13 +5,13 @@
       ul
         - @article.errors.full_messages.each do |message|
           li = message
-  .field
+  .field.text-light
     = f.label :title
     = f.text_field :title
-  .field
+  .field.text-light
     = f.label :thumbnail
     = f.file_field :thumbnail, class: 'form-control'
-  .field
+  .field.text-light
     = f.label :content
     = f.text_area :content
 
