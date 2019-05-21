@@ -7,7 +7,7 @@ h1.text-light 記事一覧
           .col-md-4.d-none.d-md-block
             img.card-img[
               style = ("max-height: 200px; max-width: 200px;")
-              src = (article.thumbnail.attached? ? url_for(article.thumbnail) : '/assets/COVER.jpg')
+              src = (article.thumbnail.attached? ? url_for(article.thumbnail) : '/assets/no_thumbnail.png')
             ]
           .col-md-8
             .card-body.h-100
