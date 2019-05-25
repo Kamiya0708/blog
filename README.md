@@ -1,28 +1,15 @@
-<<<<<<< HEAD
-# blog
-=======
-# README
+■アプリケーション概要
+シンプルな個人管理用ブログシステムです。
+フォント変更、画像アップロード、絵文字、動画リンクなど様々な機能が使用できます。
+記事はWYSIWYGエディタで作成するので、管理者はそのままの状態で記事を投稿することができます。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+■機能一覧(使用技術)
+・記事一覧表示
+・記事詳細表示
+・ページネーション（Kaminari）
+・記事検索（Ransack）
+・管理者ログイン/ログアウト
+・記事投稿（FlowrEdita）※1
+・画像アップロード（ActiveStorage）※1
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
->>>>>>> 確認
+※1　管理者のみ使用可能
