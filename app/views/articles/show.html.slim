@@ -3,6 +3,6 @@
   br
   .fr-view
     = raw @article.content
-
-=> link_to '編集', edit_article_path(@article), class: 'btn btn-primary mr-1'
+- if current_user
+  => link_to '編集', edit_article_path(@article), class: 'btn btn-primary mr-1'
 =< link_to '一覧', articles_path, class: 'btn btn-primary mr-1'

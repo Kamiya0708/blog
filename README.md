@@ -11,5 +11,12 @@
 ・管理者ログイン/ログアウト
 ・記事投稿（FlowrEdita）※1
 ・画像アップロード（ActiveStorage）※1
-
 ※1　管理者のみ使用可能
+
+■環境
+Ruby 2.6.2
+Ruby on Rails 5.2.3
+Docker 18.09.1
+
+■起動
+docker-compose up

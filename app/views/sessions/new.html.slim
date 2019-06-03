@@ -4,7 +4,6 @@ h1.text-light ログイン
     .form-group.text-light
         = f.label :name, 'ユーザ名'
         = f.text_field :name, class: 'form-control', id: 'session_name'
-    .form-group.text-light
         = f.label :password, 'パスワード'
-        = f.text_field :password, class: 'form-control', id: 'session_password'
+        = f.password_field :password, class: 'form-control', id: 'session_password'
     = f.submit 'ログイン', class: 'btn btn-primary'
